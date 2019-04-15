@@ -15,6 +15,16 @@
             <a href="/shows">Go Back</a>
         </div>
 
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{message.tags}}" {% endif %}>
+                    {{message}}
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <div class="content">
             <p>Title: {{show_html.title}}</p>
             <p>Network: {{show_html.network}}</p>

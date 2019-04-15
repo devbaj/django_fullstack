@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Read (All)</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>All Shows</h1>
+
+        <table>
+
+            <thead>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Network</th>
+                <th>Release Date</th>
+                <th>Actions</th>
+            </thead>
+            {% for show in shows_list_html %}
+                <tr>
+                    <td>{{show.id}}</td>
+                    <td>{{show.title}}</td>
+                    <td>{{show.network}}</td>
+                    <td>{{show.release_date}}</td>
+                    <td><a href="">Show</a> | <a href="">Edit</a> | <a href="">Delete</a></td>
+                </tr>
+            {% endfor %}
+
+            <a href="/shows/new">Add a New Show</a>
+
+        </table>
+
+    </div>
+
+</body>
+</html>

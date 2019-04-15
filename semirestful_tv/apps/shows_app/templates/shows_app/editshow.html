@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="header">
+            <h1>Edit Show {{}}</h1>
+            <a href="/shows">Go Back</a>
+        </div>
+
+        <form action="/shows/{{}}/edit/process" method="post">
+            <p>Title</p>
+            <input type="text" name="title" id="title" placeholder="{{}}">
+            <p>Network</p>
+            <input type="text" name="network" id="network" placeholder="{{}}">
+            <p>Release Date</p>
+            <input type="date" name="release_date" id="release" placeholder="{{}}">
+            <p>Description</p>
+            <textarea name="desc" id="desc" cols="30" rows="5">{{}}</textarea>
+            <input type="submit" value="Update">
+        </form>
+
+        <a href="shows/{{}}">Go to Show</a>
+
+    </div>
+
+</body>
+</html>

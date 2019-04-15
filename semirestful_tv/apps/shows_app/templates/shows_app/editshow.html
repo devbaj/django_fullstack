@@ -11,23 +11,24 @@
     <div class="container">
 
         <div class="header">
-            <h1>Edit Show {{}}</h1>
+            <h1>Edit Show {{show_html.id}}</h1>
             <a href="/shows">Go Back</a>
         </div>
 
-        <form action="/shows/{{}}/edit/process" method="post">
+        <form action="/shows/{{show_html.id}}/edit/process" method="post">
+            {% csrf_token %}
             <p>Title</p>
-            <input type="text" name="title" id="title" placeholder="{{}}">
+            <input type="text" name="title" id="title" placeholder="{{show_html.title}}">
             <p>Network</p>
-            <input type="text" name="network" id="network" placeholder="{{}}">
+            <input type="text" name="network" id="network" placeholder="{{show_html.network}}">
             <p>Release Date</p>
-            <input type="date" name="release_date" id="release" placeholder="{{}}">
+            <input type="date" name="release_date" id="release" placeholder="{{show_html.release_date}}">
             <p>Description</p>
-            <textarea name="desc" id="desc" cols="30" rows="5">{{}}</textarea>
+            <textarea name="desc" id="desc" cols="30" rows="5">{{show_html.desc}}</textarea>
             <input type="submit" value="Update">
         </form>
 
-        <a href="shows/{{}}">Go to Show</a>
+        <a href="/shows/{{show_html.id}}">Go to Show</a>
 
     </div>
 

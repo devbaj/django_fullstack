@@ -11,20 +11,20 @@
     <div class="container">
 
         <div class="header">
-            <h1>TV Show {{show_id_html}}</h1>
+            <h1>TV Show {{show_html.id}}</h1>
             <a href="/shows">Go Back</a>
         </div>
 
         <div class="content">
-            <p>Title: {{}}</p>
-            <p>Network: {{}}</p>
-            <p>Release Date: {{}}</p>
-            <p>Description: {{}}</p>
+            <p>Title: {{show_html.title}}</p>
+            <p>Network: {{show_html.network}}</p>
+            <p>Release Date: {{release_date_html}}</p>
+            <p>Description: {{show_html.desc}}</p>
         </div>
 
         <div class="footer">
-            <p>Last Updated: {{}}</p>
-            <p><a href="/shows/{{}}/edit">Edit</a> | <a href="/shows/{{}}/delete">Delete</a></p>
+            <p>Last Updated: {{new_show_html.updated_at}}</p>
+            <p><a href="/shows/{{show_html.id}}/edit">Edit</a> | <a href="/shows/{{show_html.id}}/delete">Delete</a></p>
         </div>
 
     </div>

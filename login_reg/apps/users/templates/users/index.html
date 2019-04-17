@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login & Registration</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    {% load static %}
+    <script src="{% static 'users/js/validation.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
 </head>
 <body>
     
@@ -17,16 +21,17 @@
         {% endif %}
         <div class="reg">
             <h1>Registraion</h1>
-            <form action="/registration/process" method="post">
+            <form action="/registration/process" method="post" id="reg-form">
                 {% csrf_token %}
                 <p>First Name</p>
                 <input type="text" name="fname" id="fname">
                 <p>Last Name</p>
                 <input type="text" name="lname" id="lname">
                 <p>Email</p>
-                <input type="text" name="email" id="email">
+                <div id="email-msg"></div>
+                <input type="text" name="email" id="email-reg">
                 <p>Password</p>
-                <input type="password" name="pw" id="pw">
+                <input type="password" name="pw" id="pw_reg">
                 <p>Confirm PW</p>
                 <input type="password" name="conf_pw" id="conf_pw">
                 <input type="submit" value="Register">
@@ -38,9 +43,9 @@
             <form action="/login/process" method="post">
                 {% csrf_token %}
                 <p>Email</p>
-                <input type="text" name="email" id="email">
+                <input type="text" name="email" id="email_login">
                 <p>Password</p>
-                <input type="password" name="pw" id="pw">
+                <input type="password" name="pw" id="pw_login">
                 <input type="submit" value="Log In">
             </form>
         </div>

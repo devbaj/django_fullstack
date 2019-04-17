@@ -24,6 +24,23 @@ def process_reg(request):
         messages.success(request, "Successfully registered!")
         return redirect("/success")
 
+#########################
+# AJAX EMAIL VALIDATION
+########################
+def email(request):
+    found = False
+    result = User.objects.filter(email=request.POST["email"])
+    print("*"*80)
+    print(result)
+    print("*"*80)
+    if len(result) > 0:
+        found = True
+    context = {
+        "found_html": found
+    }
+    print(found)
+    return render(request, "users/partials/email.html", context)
+
 #######################
 # DISPLAY SUCCESS PAGE
 #######################

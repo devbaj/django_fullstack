@@ -29,7 +29,7 @@
                 <p class="sender">{{message.sender.username}} - {{message.created_at}}</p>
                 <p class="msg-read">{{ message.message }}</p>
                 {% for comment in message.comments.all %}
-                    <p class="sender">{{ comment.commenter.first_name }} {{ comment.comementer.last_name }} - {{comment.created_at}}</p>
+                    <p class="sender">{{ comment.commenter.username}} - {{comment.created_at}}</p>
                     <p class="comment-read">{{ comment.comment }}</p>
                 {% endfor %}
                 <form action="wall/comment/send" method="post">

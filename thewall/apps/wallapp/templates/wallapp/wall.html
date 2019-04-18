@@ -28,15 +28,15 @@
             {% for message in all_messages_html %}
                 <p class="sender">{{message.sender.username}} - {{message.created_at}}</p>
                 <p class="msg-read">{{ message.message }}</p>
-                {% for comment in message.comment_set.all %}
-                    <p class="sender">{{ comment.user.first_name }} {{ comment.user.last_name }} - {{comment.created_at}}</p>
-                    <p class="comment-read">{{ comment }}</p>
+                {% for comment in message.comments.all %}
+                    <p class="sender">{{ comment.commenter.first_name }} {{ comment.comementer.last_name }} - {{comment.created_at}}</p>
+                    <p class="comment-read">{{ comment.comment }}</p>
                 {% endfor %}
-                <form action="/wall/comment/send" method="post">
+                <form action="wall/comment/send" method="post">
                     {% csrf_token %}
                     <p>Post a comment</p>
                     <textarea name="comment" id="comment-write" cols="30" rows="4"></textarea>
-                    <input type="hidden" name="{{ message.id }}">
+                    <input type="hidden" name="msg-id" value="{{ message.id }}">
                     <button type="submit">Post comment</button>
                 </form>
             {% endfor %}

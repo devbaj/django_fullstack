@@ -17,11 +17,16 @@ class Message(models.Model):
     objects = MessageManager()
 
 class CommentManager(models.Manager):
-    pass
+    def add_comment(self, userid, postData):
+        user = User.objects.get(id=userid)
+        message = Message.objects.get(id=postData["msg-id"])
+        Comment.objects.create(message=message, commenter=user, comment=postData["comment"])
+        return True
 
 class Comment(models.Model):
     message = models.ForeignKey(Message, related_name="comments")
-    user_id = models.ForeignKey(User, related_name="users")
+    commenter = models.ForeignKey(User, related_name="commenters")
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = CommentManager()

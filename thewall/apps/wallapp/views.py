@@ -21,5 +21,9 @@ def send_message(request):
     return redirect("/wall")
 
 def send_comment(request):
-
+    posted = Comment.objects.add_comment(request.session["userid"], request.POST)
+    if posted:
+        messages.success(request, "Comment sent!")
+    else:
+        messages.error(request, "Unable to send comment.")
     return redirect("/wall")

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wall Assignment</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="banner">
+            <h1>CodingDojo Wall</h1>
+            <div class="user-info">
+                <a href="/logout">log off</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <form action="/wall/message/send" method="post">
+                {% csrf_token %}
+                <p>Post a message</p>
+                <textarea name="msg" id="msg-write" cols="30" rows="8"></textarea>
+                <button type="submit">Post</button>
+            </form>
+            __for message in messages__
+                <p class="sender">__sendername__ - __sendtime__</p>
+                <p class="msg-read">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur placeat ipsa provident debitis rerum neque ab, quaerat libero deserunt, veniam earum cupiditate amet quos praesentium alias reprehenderit aliquam minus numquam.</p>
+                __for comment in message.comments__
+                    <p class="sender">__commentername__ - __commenttime__</p>
+                    <p class="comment-read">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolorem omnis, amet nesciunt vel cupiditate provident totam molestias, velit nisi voluptate? Excepturi molestias itaque corporis rerum? Ex animi omnis dolorem.</p>
+                <form action="/wall/comment/send" method="post">
+                    {% csrf_token %}
+                    <p>Post a comment</p>
+                    <textarea name="comment" id="comment-write" cols="30" rows="4"></textarea>
+                    <button type="submit">Post comment</button>
+                </form>
+            __endfor__
+
+            
+            
+        </div>
+
+    </div>
+
+</body>
+</html>

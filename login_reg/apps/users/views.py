@@ -30,15 +30,11 @@ def process_reg(request):
 def email(request):
     found = False
     result = User.objects.filter(email=request.POST["email"])
-    print("*"*80)
-    print(result)
-    print("*"*80)
     if len(result) > 0:
         found = True
     context = {
         "found_html": found
     }
-    print(found)
     return render(request, "users/partials/email.html", context)
 
 #######################
@@ -66,9 +62,6 @@ def login(request):
         messages.error(request,"User does not exist.")
         return redirect("/")
     email_match = User.objects.get(email=request.POST["email"]) 
-    print("*"*80)
-    print(email_match)
-    print("*"*80)
     if bcrypt.checkpw(request.POST["pw"].encode(), email_match.pw_hash.encode()):
         request.session["userid"] = email_match.id
         messages.success(request, "Successfully logged in!")

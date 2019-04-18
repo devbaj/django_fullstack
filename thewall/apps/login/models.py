@@ -31,19 +31,19 @@ class UserManager(models.Manager):
             pw_hash = pw_hash
         )
         return new_user
-    def is_original(request, key, value):
-        matches = User.objects.filter(key=value)
+    def is_original(self, key, value):
+        matches = User.objects.filter(**{key:value})
         if len(matches) != 0:
             return False
         return True
-    def login(request, postData):
+    def login(self, postData):
         attempt = User.objects.filter(username=postData["username"])
         if len(attempt) != 1:
             return False
         if bcrypt.checkpw(postData["pw"].encode(), attempt[0].pw_hash.encode()):
             return True
         return False
-    def get_id(request, postData):
+    def get_id(self, postData):
         user = User.objects.get(username=postData["username"])
         return user.id
 

@@ -19,16 +19,16 @@
         </div>
 
         <div class="content">
-            <form action="/wall/message/send" method="post">
+            <form action="wall/message/send" method="post">
                 {% csrf_token %}
                 <p>Post a message</p>
                 <textarea name="msg" id="msg-write" cols="30" rows="8"></textarea>
                 <button type="submit">Post</button>
             </form>
             {% for message in all_messages_html %}
-                <p class="sender">message.sender - message.created_at</p>
-                <p class="msg-read">{{ message }}</p>
-                {% for comment in message.comments %}
+                <p class="sender">{{message.sender.username}} - {{message.created_at}}</p>
+                <p class="msg-read">{{ message.message }}</p>
+                {% for comment in message.comment_set.all %}
                     <p class="sender">{{ comment.user.first_name }} {{ comment.user.last_name }} - {{comment.created_at}}</p>
                     <p class="comment-read">{{ comment }}</p>
                 {% endfor %}

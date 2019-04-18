@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
+from django.contrib import messages
 # Create your views here.
 
 def wall(request):
@@ -12,7 +13,13 @@ def wall(request):
     return render(request, "wallapp/wall.html", context)
 
 def send_message(request):
+    sent = Message.objects.add_message(request.session["userid"],request.POST)
+    if sent:
+        messages.success(request, "Message sent!")
+    else:
+        messages.error(request, "Unable to send message.")
     return redirect("/wall")
 
 def send_comment(request):
+
     return redirect("/wall")

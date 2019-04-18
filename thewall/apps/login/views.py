@@ -44,7 +44,7 @@ def check_username(request):
 ########################
 def register(request):
     
-    if is_original(email, request.POST["email"]) and is_original(username, request.POST["username"]):
+    if User.objects.is_original("email", request.POST["email"]) and User.objects.is_original("username", request.POST["username"]):
         pass
     else:
         messages.error(request, "User already exists.", extra_tags="registration")
@@ -56,9 +56,6 @@ def register(request):
             messages.error(request, value, extra_tags="registration")
         return redirect("/")
     new_user = User.objects.add_user(request.POST)
-    print("*"*80)
-    print(new_user)
-    print("*"*80)
     request.session["userid"] = new_user.id
     messages.success(request, "Successfully registered!")
     return redirect("/wall")

@@ -45,6 +45,7 @@ class UserManager(models.Manager):
         return False
     def get_id(request, postData):
         user = User.objects.get(username=postData["username"])
+        return user.id
 
 class User(models.Model):
     first_name = models.CharField(max_length=45)

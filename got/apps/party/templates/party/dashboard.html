@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Got GOT?</h1>
+            <div class="navbar">
+                <p><a href="/party">Dashboard</a> | <a href="/party/shows">Upcoming Shows</a></p>
+            </div>
+        </div>
+
+        <div class="personal-info">
+            <div class="stats">
+                <h2>Stats</h2>
+                <div class="stat-box">
+                    <p>Name: __user.first_name__</p>
+                    <p>Events Hosted: __user.events.count__</p>
+                    <p>Events Joined: __user.attendance.count__</p>
+                    <p>Registration Date: __user.created_at__</p>
+                </div>
+                <form action="/party/create" method="get">
+                    <button type="submit">Create a Party</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="event-list">
+            <h2>Your Upcoming Events</h2>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>When</th>
+                    <th>Action</th>
+                </thead>
+                __for event in user.attendance.all__
+                    <tr>
+                        <td>__event.show_name__</td>
+                        <td>__event.location__</td>
+                        <td>__event.date__</td>
+                        <td><a href="/party/__event.id__">View</a> | <a href="/party/__event.id__/edit">Edit</a></td>
+                    </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

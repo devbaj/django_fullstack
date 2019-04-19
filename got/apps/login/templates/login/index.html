@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login & Register</title>
+    
+    {% load static %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="{% static 'login/js/main.js' %}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="header">
+            <h1>Got GOT?</h1>
+            <div class="navbar">
+                <p><a href="/party">Dashboard</a> | <a href="/party/shows">Upcoming Shows</a></p>
+            </div>
+        </div>
+
+        <div class="reg-form">
+            <h1>Register</h1>
+
+            {% if messages %}
+                <ul class="reg-msg">
+                {% for message in messages %}
+                    {% if "registration" in message.tags %}
+                        <li class="{{message.tags}}">{{ message }}</li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form action="/register/process" method="post" id="reg-form">
+                {% csrf_token %}
+                <p>First Name</p>
+                <input type="text" name="fname" id="fname">
+                <p>Last Name</p>
+                <input type="text" name="lname" id="lname">
+                <p>Email</p>
+                <div id="email-msg"></div>
+                <input type="text" name="email" id="email">
+                <p>Password</p>
+                <input type="password" name="pw" id="pw-reg">
+                <p>Confirm Password</p>
+                <input type="password" name="pw-conf" id="pw-conf">
+                <button type="submit" id="reg-submit">Register</button>
+            </form>
+        </div>
+
+        <div class="login-form">
+            <h1>Log In</h1>
+
+            {% if messages %}
+                <ul class="reg-msg">
+                {% for message in messages %}
+                    {% if "login" in message.tags %}
+                        <li class="{{message.tags}}">{{ message }}</li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form action="/login/process" method="post" id="login-form">
+                {% csrf_token %}
+                <p>Username</p>
+                <input type="text" name="username" id="username-login">
+                <p>Password</p>
+                <input type="password" name="pw" id="pw-login">
+                <button type="submit" id="login-submit">Log In</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

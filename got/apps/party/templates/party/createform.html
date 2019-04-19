@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create New Event</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Got GOT?</h1>
+            <div class="navbar">
+                <p><a href="/party">Dashboard</a> | <a href="/party/shows">Upcoming Shows</a></p>
+            </div>
+        </div>
+    
+        <div class="create-form">
+            <h2>Add an Upcoming Event</h2>
+            <form action="party/show/add" method="post">
+                <table>
+                    <tr>
+                        <td>Title</td>
+                        <td><input type="text" name="title" id="title"></td>
+                    </tr>
+                    <tr>
+                        <td>Genre</td>
+                        <td><select name="genre" id="genre">
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Romantic Comedy">Romantic Comedy</option>
+                            <option value="Science Fiction">Science Fiction</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>When</td>
+                        <td><input type="date" name="when" id="when"></td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td><input type="text" name="location" id="location"></td>
+                    </tr>
+                </table>
+                <button type="submit">Create Event</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

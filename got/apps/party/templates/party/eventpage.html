@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Event</title>
+</head>
+<body>
+    
+    <div class="container">
+    
+        <div class="header">
+            <h1>Got GOT?</h1>
+            <div class="navbar">
+                <p><a href="/party">Dashboard</a> | <a href="/party/shows">Upcoming Shows</a></p>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>__event.show_name__</h2>
+            <p>Genre: __event.genre__</p>
+            <p>When: __event.date__</p>
+            <p>Location: __event.location__</p>
+            <h2>Attendees</h2>
+                __for attendee in event.attendees.all__
+                    __attendee.name__
+                __endfor__
+                __if event.host.id == request.session.userid__
+                    <form action="/party/event/destroy" method="post">
+                        <input type="hidden" name="eventid" value="__event.id__">
+                        <button type="submit">Cancel Event</button>
+                    </form>
+                __else__
+                    <form action="/party/event/join" method="post">
+                        <input type="hidden" name="eventid" value="__event.id__">
+                    </form>
+
+        </div>
+
+    </div>
+        
+</body>
+</html>
